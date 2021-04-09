@@ -12,8 +12,8 @@
         <label>
             Nombre
         </label>
-        <div class="alert p-1 text-center alert-danger mb-0" role="alert" *ngIf="personaForm && (nombre?.invalid && (nombre?.dirty || nombre?.touched) || isSubmitted ) && nombre?.errors?.required">
-            Nombre es requerido.
+        <div class="alert p-1 text-center alert-danger mb-0" role="alert" *ngIf="personaForm && (nombre?.invalid && (nombre?.dirty || nombre?.touched) || isSubmitted ) && (edad?.errors?.required || edad?.errors?.minLength || edad?.errors?.maxLength)">
+            Nombre es requerido, de 4 a 200 caracteres.
         </div>
         <input type="text" formControlName="nombre" class="form-control">
     </div>
