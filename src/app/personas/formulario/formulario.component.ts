@@ -11,7 +11,7 @@ import { PersonaService } from 'src/app/services/Persona.service';
 export class FormularioComponent implements OnInit {
 
   public personaForm = new FormGroup({
-    nombre: new FormControl('', [ Validators.required, Validators.minLength(4), Validators.maxLength(200) ]),
+    nombre: new FormControl('', [ Validators.required ]),
     edad: new FormControl(0, [ Validators.required, Validators.min(18), Validators.max(99) ]),
     sexo: new FormControl(null, [ Validators.required ])
   });
