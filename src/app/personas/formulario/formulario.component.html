@@ -1,0 +1,72 @@
+<form [formGroup]="personaForm" class="w-100" (ngSubmit)="guardarPersona()">
+
+    <h5 class="font-weight-bolder text-center">Alta de persona</h5>
+
+    <div class="form-group" *ngIf="altaExitosa">
+        <div class="alert p-1 text-center alert-success" role="alert">
+            Alta exitosa.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            Nombre
+        </label>
+        <div class="alert p-1 text-center alert-danger mb-0" role="alert" *ngIf="personaForm && (nombre?.invalid && (nombre?.dirty || nombre?.touched) || isSubmitted ) && nombre?.errors?.required">
+            Nombre es requerido.
+        </div>
+        <input type="text" formControlName="nombre" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>
+            Edad
+        </label>
+        <div class="alert p-1 text-center alert-danger mb-0" role="alert" *ngIf="personaForm && edad?.invalid && ((edad?.dirty || edad?.touched) || isSubmitted ) && (edad?.errors?.required || edad?.errors?.min || edad?.errors?.max)">
+            Edad requerida de 18 a 99 años.
+        </div>
+        <input type="number" formControlName="edad" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>
+            Sexo
+        </label>
+        <div class="alert p-1 text-center alert-danger mb-0" role="alert" *ngIf="personaForm && sexo?.invalid && ((sexo?.dirty || sexo?.touched) || isSubmitted ) && sexo?.errors?.required">
+            Debes seleccionar una opción.
+        </div>
+        <select formControlName="sexo" class="form-control">
+            <option [value]="null" disabled selected>Selecciona una opción</option>
+            <option>Mujer</option>
+            <option>Hombre</option>
+        </select>
+    </div>
+
+    <div class="input-group" [ngClass]="{ 'mb-3': !fileAlert }">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onFileSelected($event)">
+            <label class="custom-file-label text-center text-truncate" for="inputGroupFile01" [ngClass]="{ 'bg-success text-white': fileName }">
+                <ng-container *ngIf="!fileName">
+                    <i class="fas fa-paperclip"></i> Subir documento
+                </ng-container>
+                <ng-container *ngIf="fileName">
+                    <i class="fas fa-paperclip"></i> {{ fileName }}
+                </ng-container>
+            </label>
+        </div>
+    </div>
+    <div class="alert p-1 text-center alert-danger mb-3" role="alert" *ngIf="fileAlert">
+        Se requiere un archivo.
+    </div>
+
+    <div class="form-group" *ngIf="altaExitosa">
+        <div class="alert p-1 text-center alert-success" role="alert">
+            Alta exitosa.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+    </div>
+
+</form>

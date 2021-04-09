@@ -1,0 +1,19 @@
+.custom-file-label::after {
+    content: none !important;
+}
+
+.form-control {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-bottom-width: 3px;
+}
+
+.alert { 
+    border-radius: 0px;
+}
