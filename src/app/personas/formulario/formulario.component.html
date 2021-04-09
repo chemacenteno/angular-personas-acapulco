@@ -44,7 +44,7 @@
 
     <div class="input-group" [ngClass]="{ 'mb-3': !fileAlert }">
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onFileSelected($event)">
+            <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onFileSelected($event)" [value]="file">
             <label class="custom-file-label text-center text-truncate" for="inputGroupFile01" [ngClass]="{ 'bg-success text-white': fileName }">
                 <ng-container *ngIf="!fileName">
                     <i class="fas fa-paperclip"></i> Subir documento

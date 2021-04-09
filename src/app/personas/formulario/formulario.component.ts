@@ -25,6 +25,7 @@ export class FormularioComponent implements OnInit {
 
   public fileName: any = null;
   public fileAlert: any = null;
+  public file: any = null;
 
   constructor(private personaService: PersonaService) { }
 
@@ -46,6 +47,8 @@ export class FormularioComponent implements OnInit {
         this.personaService.personaAdd$.emit(persona);
         this.altaExitosa = true;
         this.isSubmitted = false;
+        this.file = null;
+        this.fileName = '';
         this.personaForm.reset();
   
         setTimeout(() => this.altaExitosa = false, 4000);
@@ -60,6 +63,8 @@ export class FormularioComponent implements OnInit {
      {
        this.fileName = event.target.files[0].name;
        this.fileAlert = null;
+     }else{
+       this.fileName = '';
      }
    }
 
